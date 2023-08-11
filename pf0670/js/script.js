@@ -13,12 +13,12 @@ botaoAddTarefa.addEventListener("click", (evt)=>{
 
     //Inserindo a tarefa digitada no array.
     listaTarefasArray.push(inputTarefa.value);
-
+          
     //Criando elementos li
     let li = document.createElement("li");
 
     //Adicionado o item digitado no elemento criado.
-    li.textContent = inputTarefa.value;
+    li.textContent = tarefa;
 
     //Recuperando a lista UL
     const listaTarefasUL = document.getElementById("lista-tarefas");
@@ -54,6 +54,33 @@ botaoAddTarefa.addEventListener("click", (evt)=>{
     inputTarefa.value = ""
     console.log(listaTarefasArray);
 
+ 
+
+
+//     //Pegando as tarefas pares com map:
+// let tarefasPares = listaTarefasArray.map((tarefa,indice)=>{
+//     if(indice % 2 == 0){
+//         return tarefa;
+//     }
+// });
+// console.log(tarefasPares);
+// //Quebrando linha.
+// console.log("\n");
+
+    //Pegando as tarefas pares com map e filtrando o undefined com filter:
+    let tarefasPares = listaTarefasArray.map((tarefa,indice)=>{
+        if(indice % 2 == 0){
+            return tarefa;
+        }
+    }).filter((tarefa)=>{
+        return tarefa != undefined;
+    });
+
+
+    console.log(tarefasPares);
+    //Quebrando linha.
+    console.log("\n");
+
 });
 
 
@@ -62,5 +89,31 @@ botaoAddTarefa.addEventListener("click", (evt)=>{
 // console.log(frase);
 // let arrayGerado = frase.split("a");
 // console.log(arrayGerado);
+
+
+// //Exemplo de utilização de filter:
+// let numeros = [1,2,3,4,5,6,7,8,9,10];
+// let numerosPares = numeros.filter(numero => numero % 2 == 0);
+// console.log(numerosPares);
+
+//Exemplo de utilização de reduce:
+// let numeros = [1,2,3,4,5,6,7,8,9,10];
+
+// let soma = numeros.reduce((acumulador,numero)=> acumulador + numero);
+
+// console.log(soma);
+
+//Exemplo de utilização de reduce com array de objetos:
+let pessoas = [
+    {nome:"João",idade:20},
+    {nome:"Maria",idade:30},
+    {nome:"José",idade:40},
+    {nome:"Pedro",idade:50},
+    {nome:"Ana",idade:60},
+    {nome:"Paulo",idade:70}
+];
+
+let somaDasIdades = pessoas.reduce((acumulador,pessoa)=> acumulador + pessoa.idade,0);
+console.log(somaDasIdades);
 
 
